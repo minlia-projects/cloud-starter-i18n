@@ -1,0 +1,34 @@
+{
+  "properties": [
+    {
+      "name": "system.i18n.cachedMilliSeconds",
+      "description": "国际化缓存时间",
+      "type": "java.lang.Long",
+      "defaultValue": "2073600000L"
+    },{
+      "name": "system.i18n.tableName",
+      "description": "国际化表名",
+      "type": "java.lang.String",
+      "defaultValue": "system_i18n"
+    }
+  ],
+  "hints": [
+    {
+      "name": "system.i18n.cachedMilliSeconds",
+      "values": [
+        {
+          "value": "2073600000L",
+          "description": "24天的有效缓存时间"
+        }
+      ]
+    },{
+      "name": "system.i18n.tableName",
+      "values": [
+        {
+          "value": "system_i18n",
+          "description": "国际化表名"
+        }
+      ]
+    }
+  ]
+}
