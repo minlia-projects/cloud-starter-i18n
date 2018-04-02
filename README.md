@@ -5,10 +5,10 @@
 当缓存可用时将所有国际化值存入缓存  
 不可用时直接从数据库里取出，放入本地guava cache  
 
-##TODO  
+## TODO  
 添加parameter语言请求参数配置项  
 
-##Done  
+## Done  
 Header区域请求头配置项  
 
 ## 依赖项目  
