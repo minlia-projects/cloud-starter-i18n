@@ -1,4 +1,4 @@
-package com.minlia.cloud.i18n;
+package com.minlia.cloud.i18n.properties;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

@@ -1,6 +1,9 @@
-package com.minlia.cloud.i18n;
+package com.minlia.cloud.i18n.starter.configuration;
 
 
+import com.minlia.cloud.i18n.properties.I18nProperties;
+import com.minlia.cloud.i18n.source.JdbcMessageSource;
+import com.minlia.cloud.i18n.resolver.AcceptHeaderLocaleResolver;
 import java.util.Locale;
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,13 +14,15 @@ import org.springframework.context.EnvironmentAware;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
 /**
  * Created by will on 6/19/17. 启动时延迟此BEAN初始化
@@ -27,9 +32,19 @@ import org.springframework.web.servlet.LocaleResolver;
 @ConditionalOnProperty(prefix = "system.i18n", name = {"enabled"}, havingValue = "true")
 public class I18nAutoConfiguration {
 
+
   @Configuration
-  @Import(LocaleConfiguration.class)
-  public static class MinliaLocaleConfiguration implements EnvironmentAware {
+  public static class LocaleConfiguration extends WebMvcConfigurerAdapter {
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+      LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
+      localeChangeInterceptor.setParamName("lang");
+      registry.addInterceptor(localeChangeInterceptor);
+    }
+  }
+
+  @Configuration
+  public static class SystemLocaleConfiguration implements EnvironmentAware {
 
     private static final String DEFAULT_SELECT_ONE_I18N_ITEM_SQL = "select message from system_i18n where code = ? and language = ? and country = ? limit 1";
     @Autowired

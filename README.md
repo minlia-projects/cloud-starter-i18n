@@ -1,35 +1,24 @@
-国际化模块
+# 国际化模块
 
+根据系统不同语种自动返回对应的译文  
 
+当缓存可用时将所有国际化值存入缓存  
+不可用时直接从数据库里取出，放入本地guava cache  
 
-当缓存可用时将所有国际化值存入缓存
-不可用时直接从数据库里取出，放入本地guava cache
+##TODO  
+添加parameter语言请求参数配置项  
 
+##Done  
+Header区域请求头配置项  
 
-依赖
+## 依赖项目  
+cloud-starter-context  
 
-```
-git clone https://git.coding.net/minlia-team/minlia-boot-starter.git
-cd minlia-boot-starter
-mi
-mvn clean install -DskipITs=true -DskipTests=true -Dmaven.test.skip=true -DdownloadSources=false -DdownloadJavadocs=false
-```
-
-
-先本地安装
-
-```
-git clone https://git.coding.net/minlia-team/minlia-modules.git
-cd module-language
-mi
-mvn clean install -DskipITs=true -DskipTests=true -Dmaven.test.skip=true -DdownloadSources=false -DdownloadJavadocs=false
-```
-使用方式
-
-```
+## 添加依赖项:  
+```pom
 <dependency>
-    <groupId>com.minlia.modules</groupId>
-    <artifactId>module-language</artifactId>
-    <version>1.0.0.RELEASE</version>
+  <groupId>com.minlia.cloud.starter</groupId>
+  <artifactId>cloud-starter-i18n</artifactId>
+  <version>2.0.0.RELEASE</version>
 </dependency>
 ```

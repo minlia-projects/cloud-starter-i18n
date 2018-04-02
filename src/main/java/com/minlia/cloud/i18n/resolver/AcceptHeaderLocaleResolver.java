@@ -3,7 +3,7 @@
 // (powered by Fernflower decompiler)
 //
 
-package com.minlia.cloud.i18n;
+package com.minlia.cloud.i18n.resolver;
 
 import java.util.ArrayList;
 import java.util.Enumeration;

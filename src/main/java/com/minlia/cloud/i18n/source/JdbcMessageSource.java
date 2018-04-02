@@ -1,4 +1,4 @@
-package com.minlia.cloud.i18n;
+package com.minlia.cloud.i18n.source;
 
 import java.text.MessageFormat;
 import java.util.HashMap;
@@ -68,7 +68,6 @@ public class JdbcMessageSource extends AbstractMessageSource implements
   protected MessageFormat resolveCodeInternal(String code, Locale locale) {
     String result;
 
-    code = convertCode(code);
 
     //当从数据库里获取时发出警告，可以被优化的
     log.warn("[OPTMIZATION REQUIRED] Fetching from datasource for code [{}] with locale [{}]", code,
@@ -105,12 +104,12 @@ public class JdbcMessageSource extends AbstractMessageSource implements
   /**
    * convert from ExceptionsApiCode50001 to exceptions.api.code.50001
    */
-  private String convertCode(String code) {
-    if (!StringUtils.isEmpty(code)) {
-      code = StringUtils.join(StringUtils.splitByCharacterTypeCamelCase(code), ".").toLowerCase();
-    }
-    return code;
-  }
+//  private String convertCode(String code) {
+//    if (!StringUtils.isEmpty(code)) {
+//      code = StringUtils.join(StringUtils.splitByCharacterTypeCamelCase(code), ".").toLowerCase();
+//    }
+//    return code;
+//  }
 
   /**
    * @param sqlStatement The sqlStatement to set.

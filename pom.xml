@@ -88,6 +88,11 @@
       <scope>provided</scope>
     </dependency>
 
+    <dependency>
+      <groupId>com.minlia.cloud.starter</groupId>
+      <artifactId>cloud-starter-context</artifactId>
+      <version>2.0.0-SNAPSHOT</version>
+    </dependency>
 
     <dependency>
       <groupId>org.springframework.boot</groupId>
