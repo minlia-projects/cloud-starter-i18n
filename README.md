@@ -14,7 +14,7 @@ Header区域请求头配置项
 ## 依赖项目  
 cloud-starter-context  
 
-## 添加依赖项:  
+## 集成到自已的项目时添加依赖项  
 ```pom
 <dependency>
   <groupId>com.minlia.cloud.starter</groupId>
