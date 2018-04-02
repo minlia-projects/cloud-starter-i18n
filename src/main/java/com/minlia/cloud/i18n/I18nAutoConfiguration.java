@@ -24,20 +24,18 @@ import org.springframework.web.servlet.LocaleResolver;
  */
 @Configuration
 @EnableConfigurationProperties(I18nProperties.class)
-@ConditionalOnProperty(prefix = "system.i18n", name = {"enabled"},havingValue = "true")
+@ConditionalOnProperty(prefix = "system.i18n", name = {"enabled"}, havingValue = "true")
 public class I18nAutoConfiguration {
 
   @Configuration
   @Import(LocaleConfiguration.class)
   public static class MinliaLocaleConfiguration implements EnvironmentAware {
 
+    private static final String DEFAULT_SELECT_ONE_I18N_ITEM_SQL = "select message from system_i18n where code = ? and language = ? and country = ? limit 1";
     @Autowired
     private DataSource dataSource;
-
-    private static final String DEFAULT_SELECT_ONE_I18N_ITEM_SQL="select message from system_i18n where code = ? and language = ? and country = ? limit 1";
-
     @Autowired
-    private  I18nProperties i18nProperties;
+    private I18nProperties i18nProperties;
 
     @Bean
     @ConditionalOnMissingBean
@@ -56,12 +54,13 @@ public class I18nAutoConfiguration {
       messageSource.setUseCodeAsDefaultMessage(true);
 
       //可选方案： 从单条语句的定制化到 i18nItemService的自定义
-      if(StringUtils.isEmpty(i18nProperties.getSelectOneI18nItemSql())){
+      if (StringUtils.isEmpty(i18nProperties.getSelectOneI18nItemSql())) {
         messageSource.setSqlStatement(DEFAULT_SELECT_ONE_I18N_ITEM_SQL);
-      }else {
+      } else {
         messageSource.setSqlStatement(i18nProperties.getSelectOneI18nItemSql());
       }
-      messageSource.setCachedMilliSecond(i18nProperties.getCachedMilliSeconds());//long最长支持24天的毫秒数, 内部实现的缓存
+      messageSource
+          .setCachedMilliSecond(i18nProperties.getCachedMilliSeconds());//long最长支持24天的毫秒数, 内部实现的缓存
       messageSource.setDefaultLocale(Locale.SIMPLIFIED_CHINESE);
       return messageSource;
     }

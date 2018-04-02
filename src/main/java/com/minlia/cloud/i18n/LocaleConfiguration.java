@@ -15,20 +15,14 @@
  */
 package com.minlia.cloud.i18n;
 
-import java.util.Locale;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.web.servlet.LocaleResolver;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
 public class LocaleConfiguration extends WebMvcConfigurerAdapter {
 
-    /**
-     * 只可以在HEADER里改变请求的语言, 不可以在参数上加lang参数
-     * @return
-     */
+  /**
+   * 只可以在HEADER里改变请求的语言, 不可以在参数上加lang参数
+   * @return
+   */
 //    @Lazy
 //    @Bean(name = "localeResolver")
 //    public LocaleResolver localeResolver() {

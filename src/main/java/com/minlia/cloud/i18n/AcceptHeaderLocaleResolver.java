@@ -28,6 +28,10 @@ public class AcceptHeaderLocaleResolver implements LocaleResolver {
   public AcceptHeaderLocaleResolver() {
   }
 
+  public List<Locale> getSupportedLocales() {
+    return this.supportedLocales;
+  }
+
   public void setSupportedLocales(List<Locale> locales) {
     this.supportedLocales.clear();
     if (locales != null) {
@@ -35,16 +39,12 @@ public class AcceptHeaderLocaleResolver implements LocaleResolver {
     }
   }
 
-  public List<Locale> getSupportedLocales() {
-    return this.supportedLocales;
+  public Locale getDefaultLocale() {
+    return this.defaultLocale;
   }
 
   public void setDefaultLocale(Locale defaultLocale) {
     this.defaultLocale = defaultLocale;
-  }
-
-  public Locale getDefaultLocale() {
-    return this.defaultLocale;
   }
 
   @Override

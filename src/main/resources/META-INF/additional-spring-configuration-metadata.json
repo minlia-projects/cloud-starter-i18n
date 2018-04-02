@@ -5,12 +5,14 @@
       "description": "国际化缓存时间",
       "type": "java.lang.Long",
       "defaultValue": "2073600000L"
-    },{
+    },
+    {
       "name": "system.i18n.tableName",
       "description": "国际化表名",
       "type": "java.lang.String",
       "defaultValue": "system_i18n"
-    },{
+    },
+    {
       "name": "system.i18n.enabled",
       "description": "启用国际化功能",
       "type": "java.lang.String",
@@ -26,7 +28,8 @@
           "description": "24天的有效缓存时间"
         }
       ]
-    },{
+    },
+    {
       "name": "system.i18n.enabled",
       "values": [
         {
@@ -34,7 +37,8 @@
           "description": "启用国际化功能"
         }
       ]
-    },{
+    },
+    {
       "name": "system.i18n.selectOneI18nItemSql",
       "values": [
         {
