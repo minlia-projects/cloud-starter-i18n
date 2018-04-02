@@ -24,7 +24,7 @@ import org.springframework.web.servlet.LocaleResolver;
  */
 @Configuration
 @EnableConfigurationProperties(I18nProperties.class)
-@ConditionalOnProperty(prefix = "system.i18n", name = {"cachedMilliSeconds","selectOneI18nItemSql"})
+@ConditionalOnProperty(prefix = "system.i18n", name = {"enabled"},havingValue = "true")
 public class I18nAutoConfiguration {
 
   @Configuration

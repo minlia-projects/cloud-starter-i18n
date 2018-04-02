@@ -8,6 +8,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "system.i18n")
 public class I18nProperties {
 
+    private Boolean enabled=Boolean.TRUE;
+
     private Long cachedMilliSeconds=2073600000L;
 
 //    @NotNull

@@ -7,6 +7,7 @@ import java.util.Map;
 
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.BeanInitializationException;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.support.AbstractMessageSource;
@@ -92,6 +93,9 @@ public class JdbcMessageSource extends AbstractMessageSource implements
 		//当从数据库里获取时发出警告，可以被优化的
 		log.warn("[OPTMIZATION REQUIRED] Fetching from datasource for code [{}] with locale [{}]",code,locale);
 
+
+		code= convertCode(code);
+
 		lastQuery = System.currentTimeMillis();
 
 		try {
@@ -118,6 +122,18 @@ public class JdbcMessageSource extends AbstractMessageSource implements
 		}
 
 		return new MessageFormat(result, locale);
+	}
+
+	/**
+	 * convert from ExceptionsApiCode50001 to exceptions.api.code.50001
+	 * @param code
+	 * @return
+	 */
+	private String convertCode(String code) {
+		if (!StringUtils.isEmpty(code)) {
+			code = StringUtils.join(StringUtils.splitByCharacterTypeCamelCase(code), ".").toLowerCase();
+		}
+		return code;
 	}
 
 	/**
