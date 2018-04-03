@@ -15,12 +15,12 @@
 
   <scm>
     <connection>
-      scm:git:https://github.com/minlia-projects/cloud-starter-context.git
+      scm:git:https://github.com/minlia-projects/cloud-starter-i18n.git
     </connection>
     <developerConnection>
-      scm:git:https://github.com/minlia-projects/cloud-starter-context.git
+      scm:git:https://github.com/minlia-projects/cloud-starter-i18n.git
     </developerConnection>
-    <url>https://github.com/minlia-projects/cloud-starter-context</url>
+    <url>https://github.com/minlia-projects/cloud-starter-i18n</url>
     <tag>HEAD</tag>
   </scm>
   <properties>
