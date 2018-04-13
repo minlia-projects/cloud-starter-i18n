@@ -2,20 +2,18 @@ package com.minlia.cloud.i18n.starter.configuration;
 
 
 import com.minlia.cloud.i18n.properties.I18nProperties;
-import com.minlia.cloud.i18n.source.JdbcMessageSource;
 import com.minlia.cloud.i18n.resolver.AcceptHeaderLocaleResolver;
+import com.minlia.cloud.i18n.source.JdbcMessageSource;
 import java.util.Locale;
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.EnvironmentAware;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
-import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
@@ -25,7 +23,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
 /**
- * Created by will on 6/19/17. 启动时延迟此BEAN初始化
+ *
+ * @author will
+ * @date 6/19/17
  */
 @Configuration
 @EnableConfigurationProperties(I18nProperties.class)
@@ -44,7 +44,7 @@ public class I18nAutoConfiguration {
   }
 
   @Configuration
-  public static class SystemLocaleConfiguration implements EnvironmentAware {
+  public static class SystemLocaleConfiguration  {
 
     private static final String DEFAULT_SELECT_ONE_I18N_ITEM_SQL = "select message from system_i18n where code = ? and language = ? and country = ? limit 1";
     @Autowired
@@ -98,9 +98,6 @@ public class I18nAutoConfiguration {
     }
 
 
-    @Override
-    public void setEnvironment(Environment environment) {
-    }
   }
 
 }
